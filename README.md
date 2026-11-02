@@ -1,6 +1,12 @@
 # Kindred — Community Connection Platform
 "Find people who understand you."
 
+
+## Deploy (Render + Neon)
+
+1. Database: Neon
+2. Web deploy: render
+
 ## Chạy backend trên máy
 
 ```bash
@@ -28,12 +34,4 @@ uvicorn app.main:app --reload
     Frontend nên mở kênh này khi đã đăng nhập (đây là lúc user được tính là online).
   - Sự kiện nhận: `message`, `notification`, `user_status`, `pong`, `error`. Thông báo có thể tới trên cả 2 kênh, hãy khử trùng theo `notification.id`.
 
-## Deploy (Render + Neon)
 
-1. Neon: tạo project, copy connection string.
-2. Render: New → Blueprint → chọn repo (dùng `render.yaml`).
-3. Điền biến môi trường: `DATABASE_URL`, `FRONTEND_URL`, `GOOGLE_CLIENT_ID`, `VITE_API_URL`, `VITE_WS_URL`, `VITE_GOOGLE_CLIENT_ID`.
-4. Mỗi lần deploy, `alembic upgrade head` tự chạy => dữ liệu giữ nguyên, chỉ cập nhật cấu trúc bảng.
-5. Google Cloud Console: thêm domain frontend vào Authorized JavaScript origins.
-
-Khi sửa model: `alembic revision --autogenerate -m "mo ta"` rồi commit file migration.
